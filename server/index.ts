@@ -1,11 +1,15 @@
+import "@/env";
+import { ADJECTIVES_AND_NOUNS } from "@/setup";
+import { getRandomBetweenMinAndMax } from "@/utils/random";
+import { HttpStatusCode } from "axios";
 import "dotenv/config";
 import express from "express";
-import "@/env";
 
 const app = express();
-
 app.get("/", (req, res) => {
-	res.send("Hello, world!");
+	const adjectiveRandomNum = getRandomBetweenMinAndMax(1, ADJECTIVES_AND_NOUNS.adjectives.total);
+	const nounRandomNum = getRandomBetweenMinAndMax(1, ADJECTIVES_AND_NOUNS.nouns.total);
+	res.status(HttpStatusCode.Ok).json({ adjectiveRandomNum, nounRandomNum });
 });
 
 app.listen(process.env.PORT, () => {

@@ -34,7 +34,7 @@ try {
 		nounsMap[index + 1] = noun;
 	});
 
-	const outputFilePath = join(__dirname, "../data/output.json");
+	const outputFilePath = join(__dirname, "../data/words.json");
 	writeFile(
 		outputFilePath,
 		JSON.stringify({ adjectives: adjectivesMap, nouns: nounsMap }),
